@@ -41,7 +41,7 @@ TODO (time constraint):
 
 - More stylish css
 
-. (Optional) create an authentication module. (React)
+- (Optional) create an authentication module. (React)
 
    
 
