@@ -26,7 +26,9 @@ NCM Task
 
 5. Goto http://127.0.0.1:8000/coordinates
 
-5. Goto http://127.0.0.1:8000/cities
+6. Goto http://127.0.0.1:8000/cities
+
+(Application is a bit slow due to DB connection (using Free Cloud SQL))
 
 
 
