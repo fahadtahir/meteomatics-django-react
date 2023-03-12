@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+{% csrf_token %}
+
+
+  <div class="container">
+    <div id="table-container"></div>
+  </div>
+
+
+
+  <script>
+    window.props = JSON.parse('{{ props | safe }}');
+  </script>
+
+  <script src="{% static 'cities-bundle.js' %}"></script>
+
+
+{% endblock %}

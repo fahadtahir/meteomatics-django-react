@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+{% csrf_token %}
+
+
+  <div class="container">
+    <h2 id="location"> </h2>
+    <div id="table-container"></div>
+  </div>
+
+
+
+  <script>
+    window.props = JSON.parse('{{ props | safe }}');
+  </script>
+
+  <script src="{% static 'details-bundle.js' %}"></script>
+
+
+{% endblock %}
