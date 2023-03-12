@@ -40,6 +40,6 @@ body {
     min-width: 95% !important;
   }
 
-  div.card {
+  #infoCard {
     width: 50% !important;
   }

@@ -18,7 +18,7 @@ import { Card } from 'primereact/card';
 class Details extends React.Component {
   render() {
     return (
-      <div className="card">
+      <div className="card" id="infoCard">
           <Card title="Symbol">
             <img src={`../../static/mm_api_symbols/wsymbol_${body.symbol}.png`} width="100px" className="shadow-4"></img>
           </Card><br/>
