@@ -26,7 +26,9 @@ NCM Task
 
 5. Goto http://127.0.0.1:8000/coordinates
 
-5. Goto http://127.0.0.1:8000/cities
+6. Goto http://127.0.0.1:8000/cities
+
+(Application might be a bit slow due to DB connection)
 
 
 
@@ -39,7 +41,7 @@ TODO (time constraint):
 
 - More stylish css
 
-. (Optional) create an authentication module. (React)
+- (Optional) create an authentication module. (React)
 
    
 
