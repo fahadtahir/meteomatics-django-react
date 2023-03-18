@@ -99,7 +99,7 @@ DATABASES = {
         'NAME': 'db-ncm',  
         'USER':'root',  
         'PASSWORD':'testpassword',  
-        'HOST':'34.133.84.30',  
+        'HOST':'127.0.0.1',  
         'PORT':'3306'  
     }  
 }
