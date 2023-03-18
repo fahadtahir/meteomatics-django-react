@@ -3,11 +3,17 @@ NCM Task
 
 
 
-1. MySQL DB is already setup on Google Cloud SQL. To view from any DBMS:
+~~1. MySQL DB is already setup on Google Cloud SQL. To view from any DBMS:~~
+
+   ~~IP: 34.122.18.195~~
+   ~~username: root~~
+   ~~password: testpassword~~
+
+   Trial Google Cloud account has expired. Need to setup local DB:
+
+1.    Download MySQL Installer (https://dev.mysql.com/downloads/installer/) and select MYSQL Server 8.0 and install. Setup a root password as 'testpassword' and run the server.
    
-   IP: 34.122.18.195
-   username: root
-   password: testpassword
+      Open any DBMS (https://www.heidisql.com/download.php?download=installer), connect to locahost using 'testpassword' and run 'export.sql' from the repo. DB is now setup
    
 2. populate.py is for populating tb_cities with cities.json. (Already populated)
 
