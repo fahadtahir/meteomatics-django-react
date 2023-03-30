@@ -11,7 +11,7 @@ from rest_framework.permissions import IsAuthenticated
 import requests
 from django.conf import settings
 from django.http import Http404, JsonResponse
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from django.shortcuts import render
 from .models import CEntry
 from django.contrib.auth.models import User
@@ -89,6 +89,21 @@ def get_weather_data_custom(coordinates, param):
         return str(data["data"][0]["coordinates"][0]["dates"][0]["value"])
     else:
         return None
+    
+#####    
+def get_weather_data_timeseries(coordinates, param):
+    now = datetime.utcnow().strftime('%Y-%m-%d')
+    tomorrow = (datetime.utcnow() + timedelta(days=1)).strftime('%Y-%m-%d')
+    url = settings.METEOMATICS_API_URL + now +"T00:00:00Z--" + tomorrow +"T00:00:00Z:PT1H" + param + coordinates + '/json/'
+    print(url)
+    response = requests.get(url, auth=(settings.METEOMATICS_USERNAME, settings.METEOMATICS_PASSWORD))
+    if response.status_code == 200:
+        data = response.json()
+        dates = (data["data"][0]["coordinates"][0]["dates"])
+        values = [d['value'] for d in dates]
+        return values
+    else:
+        return None
 
 def weather_data(request, coordinate_id):
     try:
@@ -139,7 +154,13 @@ def CoordinatesUpdate(request, id):
     entry.max_temp = get_weather_data_custom(str(lat)+","+str(long), '/t_max_2m_24h:C/')
     entry.symbol = get_weather_data_custom(str(lat)+","+str(long), '/weather_symbol_24h:idx/')
     entry.save()
-    return JsonResponse({'success': 'Coordinate updated'}, status=200)
+
+    updatedData = {
+        "min_temp" : entry.min_temp,
+        "max_temp" : entry.max_temp,
+        "symbol" :   entry.symbol,
+    }
+    return JsonResponse({'success': 'Coordinate updated', 'data': updatedData}, status=200)
 
 def CoordinatesDelete(request, id):
     entry = CEntry.objects.get(coordinate_id=id)
@@ -176,11 +197,11 @@ def CoordinatesDetail(request, id):
     long = entry.longitude
     temp = {
         "coordinates": str(lat)+","+str(long),
-        "symbol" : get_weather_data_custom(str(lat)+","+str(long), '/weather_symbol_1h:idx/'),
-        "temp" : get_weather_data_custom(str(lat)+","+str(long), '/t_2m:C/'),
-        "precipitation" :get_weather_data_custom(str(lat)+","+str(long), '/precip_1h:mm/'),
-        "wind_speed" : get_weather_data_custom(str(lat)+","+str(long), '/wind_speed_10m:ms/'),
-        "wind_direction" : get_weather_data_custom(str(lat)+","+str(long), '/wind_dir_10m:d/'),
+        "symbol" : get_weather_data_timeseries(str(lat)+","+str(long), '/weather_symbol_1h:idx/'),
+        "temp" : get_weather_data_timeseries(str(lat)+","+str(long), '/t_2m:C/'),
+        "precipitation" :get_weather_data_timeseries(str(lat)+","+str(long), '/precip_1h:mm/'),
+        "wind_speed" : get_weather_data_timeseries(str(lat)+","+str(long), '/wind_speed_10m:ms/'),
+        "wind_direction" : get_weather_data_timeseries(str(lat)+","+str(long), '/wind_dir_10m:d/'),
     }
     return render(request, str(settings.BASE_DIR)+'\\ncm_app\\templates\\details.html', {'props': json.dumps(temp)})
 

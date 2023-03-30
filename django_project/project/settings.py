@@ -31,8 +31,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 METEOMATICS_API_URL = 'https://api.meteomatics.com/'
-METEOMATICS_USERNAME = 'test_test'
-METEOMATICS_PASSWORD = 'nvM6CTw00r'
+METEOMATICS_USERNAME = 'test_tahir'
+METEOMATICS_PASSWORD = 'B6q8JEVpr6'
 
 # Application definition
 

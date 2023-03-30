@@ -174,8 +174,13 @@ class Table extends React.Component {
   //Update
   onRowEditComplete = (e) => {
     let { newData, index } = e;
-    let helper = (oldData, newData, i)=> {
+
+    let helper = (oldData, newData, i, data)=> {
       oldData[i] = newData;
+      console.log(data);
+        oldData[i].min_temp = data.min_temp;
+        oldData[i].max_temp = data.max_temp;
+        oldData[i].symbol = data.symbol;
       return oldData;
     }
 
@@ -199,13 +204,15 @@ class Table extends React.Component {
       console.log(response);
 
       if (response.status==200) {
-        this.setState(prevState => 
-          ({
-          globalFilterValue:  prevState.globalFilterValue,
-          filter: prevState.filter,
-          data: helper(prevState.data, newData, index),
-          dialog: false
-          }));
+        response.json().then(json => {
+          this.setState(prevState => 
+            ({
+            globalFilterValue:  prevState.globalFilterValue,
+            filter: prevState.filter,
+            data: helper(prevState.data, newData, index, json.data),
+            dialog: false
+            }));
+        });
       }
     })
     .catch(error => {
