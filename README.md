@@ -1,13 +1,5 @@
-# ncm-task
-NCM Task
+Meteomatics API with Django and React
 
-
-
-~~1. MySQL DB is already setup on Google Cloud SQL. To view from any DBMS:~~
-
-   ~~IP: 34.122.18.195~~
-   ~~username: root~~
-   ~~password: testpassword~~
 
    Trial Google Cloud account has expired. Need to setup local DB:
 
@@ -37,17 +29,6 @@ NCM Task
 (Application might be a bit slow due to DB connection)
 
 
-
-
-TODO (time constraint):
+TODO:
 
 - Due to a version conflict, unable to use UseState in React which caused some issues in CRUD actions. For eg deleting an entry forces page reload. Need more time to fix.
-
-- Weather Charts. Didn't receive Test Credentials from MetX yet.
-
-- More stylish css
-
-- (Optional) create an authentication module. (React)
-
-   
-
