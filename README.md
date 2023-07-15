@@ -18,14 +18,12 @@ Now run:
 
 5. Replace METEOMARICS_USERNAME and METEOMATICS_PASSWORD in settings.py with your own credentials ( create test account at https://www.meteomatics.com/en/weather-api/)
 
-6. Goto postman collection, https://api.postman.com/collections/19813531-5e237a31-4e08-4901-b467-58872e08d2d6?access_key=PMAT-01GVBCC7ZVZH60EDTCDB6Q3ZFY
+6. Checkout postman collection, https://api.postman.com/collections/19813531-5e237a31-4e08-4901-b467-58872e08d2d6?access_key=PMAT-01GVBCC7ZVZH60EDTCDB6Q3ZFY
 
-7. To use Signup and Login APIs, save the 'csrf' token from the response header and use it in all CRUD requests in the header as:
-   X-CSRFToken: csrftoken
+To use Signup and Login APIs, save the 'csrf' token from the response header and use it in all CRUD requests in the header as: X-CSRFToken: csrftoken
    
-8. Goto http://127.0.0.1:8000/coordinates
-
-9. Goto http://127.0.0.1:8000/cities
+9. Pages: http://127.0.0.1:8000/coordinates
+http://127.0.0.1:8000/cities
 
 
 TODO:
