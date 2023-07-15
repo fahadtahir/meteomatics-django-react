@@ -1,34 +1,25 @@
-Meteomatics API with Django and React
+Integrating Meteomatics APIs with Django and React
 
-
-   Trial Google Cloud account has expired. Need to setup local DB:
-
-1.    Download MySQL Installer (https://dev.mysql.com/downloads/installer/) and select MYSQL Server 8.0 and install. Setup a root password as 'testpassword' and run the server.
+1.    Download MySQL Installer (https://dev.mysql.com/downloads/installer/) and select MYSQL Server 8.0 and install. Setup a root password 'testpassword' and run the server.
    
-      Open any DBMS (https://www.heidisql.com/download.php?download=installer), connect to locahost using 'testpassword' and run 'export.sql' from the repo. DB is now setup
+2. Open any DBMS (https://www.heidisql.com/download.php?download=installer), connect to locahost using 'testpassword' and run 'export.sql' from the repo. DB is now setup
    
-2. populate.py is for populating tb_cities with cities.json. (Already populated)
+3. populate.py is for populating tb_cities with cities.json. (Already populated)
 
-3. Clone repo from github, create a virtual environment and activate it (https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/):
-	Now run:
-	
+4. Clone repo from github, create a virtual environment and activate it (https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/):
+Now run:
 	pip install -r requirements.txt
 	python manage.py runserver
 
-4. Goto postman collection, https://api.postman.com/collections/19813531-5e237a31-4e08-4901-b467-58872e08d2d6?access_key=PMAT-01GVBCC7ZVZH60EDTCDB6Q3ZFY
+5. Goto postman collection, https://api.postman.com/collections/19813531-5e237a31-4e08-4901-b467-58872e08d2d6?access_key=PMAT-01GVBCC7ZVZH60EDTCDB6Q3ZFY
 
-   use Signup and Login APIs and save the 'csrf' token from the response header and use it in all CRUD requests in the header as:
+6. To use Signup and Login APIs, save the 'csrf' token from the response header and use it in all CRUD requests in the header as:
    X-CSRFToken: csrftoken
    
-   use CRUD APIs
+7. Goto http://127.0.0.1:8000/coordinates
 
-5. Goto http://127.0.0.1:8000/coordinates
-
-6. Goto http://127.0.0.1:8000/cities
-
-(Application might be a bit slow due to DB connection)
-
+8. Goto http://127.0.0.1:8000/cities
 
 TODO:
 
-- Due to a version conflict, unable to use UseState in React which caused some issues in CRUD actions. For eg deleting an entry forces page reload. Need more time to fix.
+- Due to a version conflict, unable to use UseState in React which caused some issues in CRUD actions. For eg deleting an entry forces page reload.
