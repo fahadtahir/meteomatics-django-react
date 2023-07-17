@@ -21,7 +21,7 @@ Now run:
 	pip install -r requirements.txt
 	npm run dev
 
-5. Replace METEOMARICS_USERNAME and METEOMATICS_PASSWORD in settings.py with your own credentials ( create test account at https://www.meteomatics.com/en/weather-api/)
+5. Replace METEOMATICS_USERNAME and METEOMATICS_PASSWORD in settings.py with your own credentials ( create test account at https://www.meteomatics.com/en/weather-api/)
 
 6. Checkout postman collection, https://api.postman.com/collections/19813531-5e237a31-4e08-4901-b467-58872e08d2d6?access_key=PMAT-01GVBCC7ZVZH60EDTCDB6Q3ZFY
 
