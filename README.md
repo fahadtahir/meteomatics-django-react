@@ -1,11 +1,12 @@
-**Integrating Meteomatics APIs with Django and React**
+# Integrating Meteomatics APIs with Django and React
 
 This webapp combines Python Django with React FE and Meteomatics Weather APIs to provide a simple interface where users can add custom coordinates and view related weather information. 
 
 Weather information is also shown for all Saudi cities (populated from cities.json) which can be searched using autocomplete.
 
 
-**SETUP**
+
+## SETUP
 1.    Download MySQL Installer (https://dev.mysql.com/downloads/installer/) and select MYSQL Server 8.0 and install. Setup a root password 'testpassword' and run the server.
    
 2. Open any DBMS (https://www.heidisql.com/download.php?download=installer), connect to locahost using 'testpassword' and run 'export.sql' from the repo. DB is now setup
@@ -28,5 +29,6 @@ http://127.0.0.1:8000/cities
 
 
 
-TODO:
+
+## TODO:
 - Due to a version conflict, unable to use UseState in React which caused some issues in CRUD actions. For eg deleting an entry forces page reload.
