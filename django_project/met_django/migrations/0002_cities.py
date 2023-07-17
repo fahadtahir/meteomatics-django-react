@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('ncm_app', '0001_initial'),
+        ('met_django', '0001_initial'),
     ]
 
     operations = [

@@ -2,10 +2,10 @@ import mysql.connector
 import json
 py --
 mydb = mysql.connector.connect(
-  host="34.122.18.195",
+  host="localhost",
   user="root",
-  password="nmcpass",
-  database="db-nmc"
+  password="testpassword",
+  database="db_django"
 )
 
 

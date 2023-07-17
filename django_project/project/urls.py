@@ -2,7 +2,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include, path
 from rest_framework import routers
-from ncm_app.views import *
+from met_django.views import *
 
 router = routers.DefaultRouter()
 router.register(r'entries', CEntryViewSet)
