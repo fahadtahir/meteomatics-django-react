@@ -1,5 +1,5 @@
 """
-ASGI config for ncm_app project.
+ASGI config for met_django project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

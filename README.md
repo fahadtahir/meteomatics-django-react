@@ -14,7 +14,7 @@ Weather information is also shown for all Saudi cities (populated from cities.js
 4. Clone repo from github, create a virtual environment and activate it (https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/):
 Now run:
 	pip install -r requirements.txt
-	python manage.py runserver
+	npm run dev
 
 5. Replace METEOMARICS_USERNAME and METEOMATICS_PASSWORD in settings.py with your own credentials ( create test account at https://www.meteomatics.com/en/weather-api/)
 

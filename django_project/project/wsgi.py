@@ -1,5 +1,5 @@
 """
-WSGI config for ncm_app project.
+WSGI config for met_django project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

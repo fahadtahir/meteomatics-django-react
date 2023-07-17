@@ -12,11 +12,11 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 
--- Dumping database structure for db-ncm
-CREATE DATABASE IF NOT EXISTS `db-ncm` /*!40100 DEFAULT CHARACTER SET latin1 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `db-ncm`;
+-- Dumping database structure for db-django
+CREATE DATABASE IF NOT EXISTS `db-django` /*!40100 DEFAULT CHARACTER SET latin1 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `db-django`;
 
--- Dumping structure for table db-ncm.auth_group
+-- Dumping structure for table db-django.auth_group
 CREATE TABLE IF NOT EXISTS `auth_group` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(150) NOT NULL,
@@ -24,11 +24,11 @@ CREATE TABLE IF NOT EXISTS `auth_group` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table db-ncm.auth_group: ~0 rows (approximately)
+-- Dumping data for table db-django.auth_group: ~0 rows (approximately)
 /*!40000 ALTER TABLE `auth_group` DISABLE KEYS */;
 /*!40000 ALTER TABLE `auth_group` ENABLE KEYS */;
 
--- Dumping structure for table db-ncm.auth_group_permissions
+-- Dumping structure for table db-django.auth_group_permissions
 CREATE TABLE IF NOT EXISTS `auth_group_permissions` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `group_id` int NOT NULL,
@@ -40,11 +40,11 @@ CREATE TABLE IF NOT EXISTS `auth_group_permissions` (
   CONSTRAINT `auth_group_permissions_group_id_b120cbf9_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table db-ncm.auth_group_permissions: ~0 rows (approximately)
+-- Dumping data for table db-django.auth_group_permissions: ~0 rows (approximately)
 /*!40000 ALTER TABLE `auth_group_permissions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `auth_group_permissions` ENABLE KEYS */;
 
--- Dumping structure for table db-ncm.auth_permission
+-- Dumping structure for table db-django.auth_permission
 CREATE TABLE IF NOT EXISTS `auth_permission` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `auth_permission` (
   CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db-ncm.auth_permission: ~28 rows (approximately)
+-- Dumping data for table db-django.auth_permission: ~28 rows (approximately)
 /*!40000 ALTER TABLE `auth_permission` DISABLE KEYS */;
 INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALUES
 	(1, 'Can add log entry', 1, 'add_logentry'),
@@ -88,7 +88,7 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 	(28, 'Can view c entry', 7, 'view_centry');
 /*!40000 ALTER TABLE `auth_permission` ENABLE KEYS */;
 
--- Dumping structure for table db-ncm.auth_user
+-- Dumping structure for table db-django.auth_user
 CREATE TABLE IF NOT EXISTS `auth_user` (
   `id` int NOT NULL AUTO_INCREMENT,
   `password` varchar(128) NOT NULL,
@@ -105,14 +105,14 @@ CREATE TABLE IF NOT EXISTS `auth_user` (
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db-ncm.auth_user: ~2 rows (approximately)
+-- Dumping data for table db-django.auth_user: ~2 rows (approximately)
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
 	(0, 'pbkdf2_sha256$390000$KOFYC5PxrA0DHW6r1bfPEi$mz8G6MQz3SeqcTSgT1og0HbWlsuMb3kWEKl1xCb8SwY=', '2023-03-12 00:48:41.000000', 0, 'GuestUser', 'Guest', 'User', 'gg', 0, 1, '2023-03-12 00:48:37.000000'),
 	(1, 'pbkdf2_sha256$390000$KOFYC5PxrA0DHW6r1bfPEi$mz8G6MQz3SeqcTSgT1og0HbWlsuMb3kWEKl1xCb8SwY=', '2023-03-11 13:01:56.283463', 0, 'testuser', '', '', '', 0, 1, '2023-03-08 09:29:46.451615');
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 
--- Dumping structure for table db-ncm.auth_user_groups
+-- Dumping structure for table db-django.auth_user_groups
 CREATE TABLE IF NOT EXISTS `auth_user_groups` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `user_id` int NOT NULL,
@@ -124,11 +124,11 @@ CREATE TABLE IF NOT EXISTS `auth_user_groups` (
   CONSTRAINT `auth_user_groups_user_id_6a12ed8b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table db-ncm.auth_user_groups: ~0 rows (approximately)
+-- Dumping data for table db-django.auth_user_groups: ~0 rows (approximately)
 /*!40000 ALTER TABLE `auth_user_groups` DISABLE KEYS */;
 /*!40000 ALTER TABLE `auth_user_groups` ENABLE KEYS */;
 
--- Dumping structure for table db-ncm.auth_user_user_permissions
+-- Dumping structure for table db-django.auth_user_user_permissions
 CREATE TABLE IF NOT EXISTS `auth_user_user_permissions` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `user_id` int NOT NULL,
@@ -140,11 +140,11 @@ CREATE TABLE IF NOT EXISTS `auth_user_user_permissions` (
   CONSTRAINT `auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table db-ncm.auth_user_user_permissions: ~0 rows (approximately)
+-- Dumping data for table db-django.auth_user_user_permissions: ~0 rows (approximately)
 /*!40000 ALTER TABLE `auth_user_user_permissions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `auth_user_user_permissions` ENABLE KEYS */;
 
--- Dumping structure for table db-ncm.django_admin_log
+-- Dumping structure for table db-django.django_admin_log
 CREATE TABLE IF NOT EXISTS `django_admin_log` (
   `id` int NOT NULL AUTO_INCREMENT,
   `action_time` datetime(6) NOT NULL,
@@ -162,11 +162,11 @@ CREATE TABLE IF NOT EXISTS `django_admin_log` (
   CONSTRAINT `django_admin_log_chk_1` CHECK ((`action_flag` >= 0))
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table db-ncm.django_admin_log: ~0 rows (approximately)
+-- Dumping data for table db-django.django_admin_log: ~0 rows (approximately)
 /*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
 /*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
 
--- Dumping structure for table db-ncm.django_content_type
+-- Dumping structure for table db-django.django_content_type
 CREATE TABLE IF NOT EXISTS `django_content_type` (
   `id` int NOT NULL AUTO_INCREMENT,
   `app_label` varchar(100) NOT NULL,
@@ -175,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `django_content_type` (
   UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db-ncm.django_content_type: ~7 rows (approximately)
+-- Dumping data for table db-django.django_content_type: ~7 rows (approximately)
 /*!40000 ALTER TABLE `django_content_type` DISABLE KEYS */;
 INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 	(1, 'admin', 'logentry'),
@@ -183,11 +183,11 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 	(2, 'auth', 'permission'),
 	(4, 'auth', 'user'),
 	(5, 'contenttypes', 'contenttype'),
-	(7, 'ncm_app', 'centry'),
+	(7, 'met_django', 'centry'),
 	(6, 'sessions', 'session');
 /*!40000 ALTER TABLE `django_content_type` ENABLE KEYS */;
 
--- Dumping structure for table db-ncm.django_migrations
+-- Dumping structure for table db-django.django_migrations
 CREATE TABLE IF NOT EXISTS `django_migrations` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `app` varchar(255) NOT NULL,
@@ -196,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `django_migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db-ncm.django_migrations: ~19 rows (approximately)
+-- Dumping data for table db-django.django_migrations: ~19 rows (approximately)
 /*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
 INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 	(1, 'contenttypes', '0001_initial', '2023-03-08 09:16:34.350557'),
@@ -216,13 +216,13 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 	(15, 'auth', '0010_alter_group_name_max_length', '2023-03-08 09:16:49.507547'),
 	(16, 'auth', '0011_update_proxy_permissions', '2023-03-08 09:16:50.542555'),
 	(17, 'auth', '0012_alter_user_first_name_max_length', '2023-03-08 09:16:51.184249'),
-	(18, 'ncm_app', '0001_initial', '2023-03-08 09:18:30.393993'),
+	(18, 'met_django', '0001_initial', '2023-03-08 09:18:30.393993'),
 	(20, 'sessions', '0001_initial', '2023-03-08 09:28:05.502386'),
-	(21, 'ncm_app', '0002_cities', '2023-03-12 16:38:15.630761'),
-	(22, 'ncm_app', '0003_alter_cities_region_id', '2023-03-12 16:38:16.145453');
+	(21, 'met_django', '0002_cities', '2023-03-12 16:38:15.630761'),
+	(22, 'met_django', '0003_alter_cities_region_id', '2023-03-12 16:38:16.145453');
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
 
--- Dumping structure for table db-ncm.django_session
+-- Dumping structure for table db-django.django_session
 CREATE TABLE IF NOT EXISTS `django_session` (
   `session_key` varchar(40) NOT NULL,
   `session_data` longtext NOT NULL,
@@ -231,14 +231,14 @@ CREATE TABLE IF NOT EXISTS `django_session` (
   KEY `django_session_expire_date_a5c62663` (`expire_date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table db-ncm.django_session: ~2 rows (approximately)
+-- Dumping data for table db-django.django_session: ~2 rows (approximately)
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
 	('49ck40epkdii3id85rtx3en5w240ztu2', '.eJxVjEEOwiAQRe_C2hCwnRFcuvcMZGYAqRpISrsy3l2bdKHb_977LxVoXUpYe5rDFNVZWXX43ZjkkeoG4p3qrWlpdZkn1puid9r1tcX0vOzu30GhXr51Tnh0OSJGg8hutGOyAwzRonimTGjA8QCejPMmE6NIYoOGCATg5NT7A-VMOAA:1pZqA4:XH2kcYAIRZs_ebpjynHE6szfQmzaygKATgTR0KOKtWI', '2023-03-22 09:32:40.048113'),
 	('rft4sjqvzscnd6tb20x36i2ewai992yt', '.eJxVjEEOwiAQRe_C2hCwnRFcuvcMZGYAqRpISrsy3l2bdKHb_977LxVoXUpYe5rDFNVZWXX43ZjkkeoG4p3qrWlpdZkn1puid9r1tcX0vOzu30GhXr51Tnh0OSJGg8hutGOyAwzRonimTGjA8QCejPMmE6NIYoOGCATg5NT7A-VMOAA:1payrE:8QV22KORQVXsjepcHga-cfFO32RUbOU0wwt0pQ2-S9Q', '2023-03-25 13:01:56.499937');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 
--- Dumping structure for table db-ncm.tb_cities
+-- Dumping structure for table db-django.tb_cities
 CREATE TABLE IF NOT EXISTS `tb_cities` (
   `city_id` int NOT NULL,
   `region_id` int NOT NULL,
@@ -249,7 +249,7 @@ CREATE TABLE IF NOT EXISTS `tb_cities` (
   PRIMARY KEY (`city_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table db-ncm.tb_cities: ~4,561 rows (approximately)
+-- Dumping data for table db-django.tb_cities: ~4,561 rows (approximately)
 /*!40000 ALTER TABLE `tb_cities` DISABLE KEYS */;
 INSERT INTO `tb_cities` (`city_id`, `region_id`, `name_ar`, `name_en`, `latitude`, `longitude`) VALUES
 	(1, 7, 'تبوك', 'Tabuk', 28.41463997, 36.53387003),
@@ -4835,7 +4835,7 @@ INSERT INTO `tb_cities` (`city_id`, `region_id`, `name_ar`, `name_en`, `latitude
 	(23695, 8, 'السياييل', 'Al Sayayil', 25.84130057, 40.58890654);
 /*!40000 ALTER TABLE `tb_cities` ENABLE KEYS */;
 
--- Dumping structure for table db-ncm.tb_coordinates
+-- Dumping structure for table db-django.tb_coordinates
 CREATE TABLE IF NOT EXISTS `tb_coordinates` (
   `coordinate_id` int NOT NULL AUTO_INCREMENT,
   `user_id` int NOT NULL,
@@ -4847,7 +4847,7 @@ CREATE TABLE IF NOT EXISTS `tb_coordinates` (
   UNIQUE KEY `unique_coordinate` (`user_id`,`latitude`,`longitude`)
 ) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db-ncm.tb_coordinates: ~4 rows (approximately)
+-- Dumping data for table db-django.tb_coordinates: ~4 rows (approximately)
 /*!40000 ALTER TABLE `tb_coordinates` DISABLE KEYS */;
 INSERT INTO `tb_coordinates` (`coordinate_id`, `user_id`, `latitude`, `longitude`, `created_at`, `updated_at`) VALUES
 	(7, 1, 26.00000000, 26.00000000, '2023-03-08 12:48:30', '2023-03-12 17:55:34'),

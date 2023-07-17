@@ -140,7 +140,7 @@ def CoordinatesView(request):
             "symbol" :   get_weather_data_custom(latitude+","+longitude, '/weather_symbol_24h:idx/'),
         }
         c_entries.append(temp)
-    return render(request, str(settings.BASE_DIR)+'\\ncm_app\\templates\\coordinate_list_react.html', {'props': json.dumps(c_entries)})
+    return render(request, str(settings.BASE_DIR)+'\\met_django\\templates\\coordinate_list_react.html', {'props': json.dumps(c_entries)})
 
 
 def CoordinatesUpdate(request, id):
@@ -203,7 +203,7 @@ def CoordinatesDetail(request, id):
         "wind_speed" : get_weather_data_timeseries(str(lat)+","+str(long), '/wind_speed_10m:ms/'),
         "wind_direction" : get_weather_data_timeseries(str(lat)+","+str(long), '/wind_dir_10m:d/'),
     }
-    return render(request, str(settings.BASE_DIR)+'\\ncm_app\\templates\\details.html', {'props': json.dumps(temp)})
+    return render(request, str(settings.BASE_DIR)+'\\met_django\\templates\\details.html', {'props': json.dumps(temp)})
 
 
 def CitiesView(request):
@@ -215,7 +215,7 @@ def CitiesView(request):
             "name" : (entry.name_en).replace("'", ""), #fix dumps not working
         }
         c_entries.append(temp)
-    return render(request, str(settings.BASE_DIR)+'\\ncm_app\\templates\\cities.html', {'props': json.dumps(c_entries)})
+    return render(request, str(settings.BASE_DIR)+'\\met_django\\templates\\cities.html', {'props': json.dumps(c_entries)})
 
 
 
@@ -227,10 +227,10 @@ def CitiesDetail(request, id):
     temp = {
         "coordinates": str(lat)+","+str(long),
         "location": entry.name_en.replace("'", ""), #fix dumps not working,
-        "symbol" : get_weather_data_custom(str(lat)+","+str(long), '/weather_symbol_1h:idx/'),
-        "temp" : get_weather_data_custom(str(lat)+","+str(long), '/t_2m:C/'),
-        "precipitation" :get_weather_data_custom(str(lat)+","+str(long), '/precip_1h:mm/'),
-        "wind_speed" : get_weather_data_custom(str(lat)+","+str(long), '/wind_speed_10m:ms/'),
-        "wind_direction" : get_weather_data_custom(str(lat)+","+str(long), '/wind_dir_10m:d/'),
+        "symbol" : get_weather_data_timeseries(str(lat)+","+str(long), '/weather_symbol_1h:idx/'),
+        "temp" : get_weather_data_timeseries(str(lat)+","+str(long), '/t_2m:C/'),
+        "precipitation" :get_weather_data_timeseries(str(lat)+","+str(long), '/precip_1h:mm/'),
+        "wind_speed" : get_weather_data_timeseries(str(lat)+","+str(long), '/wind_speed_10m:ms/'),
+        "wind_direction" : get_weather_data_timeseries(str(lat)+","+str(long), '/wind_dir_10m:d/'),
     }
-    return render(request, str(settings.BASE_DIR)+'\\ncm_app\\templates\\details.html', {'props': json.dumps(temp)})
+    return render(request, str(settings.BASE_DIR)+'\\met_django\\templates\\details.html', {'props': json.dumps(temp)})
