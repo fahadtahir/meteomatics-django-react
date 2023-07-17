@@ -1,5 +1,8 @@
 # Integrating Meteomatics APIs with Django and React
 
+![coordinates](https://github.com/fahadtahir/meteomatics-django-react/assets/10499583/e052fc52-2bde-4a89-b634-bd702315fc46)
+
+
 This webapp combines Python Django with React FE and Meteomatics Weather APIs to provide a simple interface where users can add custom coordinates and view related weather information. 
 
 Weather information is also shown for all Saudi cities (populated from cities.json) which can be searched using autocomplete.
