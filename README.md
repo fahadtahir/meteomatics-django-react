@@ -2,7 +2,8 @@
 
 This webapp combines Python Django with React FE and Meteomatics Weather APIs to provide a simple interface where users can add custom coordinates and view related weather information. 
 
-Weather information is also shown for all Saudi cities (populated from cities.json) which can be searched using autocomplete. 
+Weather information is also shown for all Saudi cities (populated from cities.json) which can be searched using autocomplete.
+
 
 **SETUP**
 1.    Download MySQL Installer (https://dev.mysql.com/downloads/installer/) and select MYSQL Server 8.0 and install. Setup a root password 'testpassword' and run the server.
@@ -20,10 +21,11 @@ Now run:
 
 6. Checkout postman collection, https://api.postman.com/collections/19813531-5e237a31-4e08-4901-b467-58872e08d2d6?access_key=PMAT-01GVBCC7ZVZH60EDTCDB6Q3ZFY
 
-To use Signup and Login APIs, save the 'csrf' token from the response header and use it in all CRUD requests in the header as: X-CSRFToken: csrftoken
+	To use Signup and Login APIs, save the 'csrf' token from the response header and use it in all CRUD requests in the header as: X-CSRFToken: csrftoken
    
 9. Pages: http://127.0.0.1:8000/coordinates
 http://127.0.0.1:8000/cities
+
 
 
 TODO:
