@@ -10,7 +10,7 @@ Weather information is also shown for all Saudi cities (populated from cities.js
 
 
 ## SETUP
-1.    Download MySQL Installer (https://dev.mysql.com/downloads/installer/) and select MYSQL Server 8.0 and install. Setup a root password 'testpassword' and run the server.
+1.    For local development, download MySQL Installer (https://dev.mysql.com/downloads/installer/) and select MYSQL Server 8.0 and install. Setup a root password 'testpassword' and run the server.
    
 2. Open any DBMS (https://www.heidisql.com/download.php?download=installer), connect to locahost using 'testpassword' and run 'export.sql' from the repo. DB is now setup
    
@@ -21,13 +21,25 @@ Now run:
 	pip install -r requirements.txt
 	npm run dev
 
-5. Replace METEOMATICS_USERNAME and METEOMATICS_PASSWORD in settings.py with your own credentials ( create test account at https://www.meteomatics.com/en/weather-api/)
+5. Copy `django_project/.env.example` to `django_project/.env` and fill in your Hostinger MySQL values:
 
-6. Checkout postman collection, https://elements.getpostman.com/redirect?entityId=19813531-5e237a31-4e08-4901-b467-58872e08d2d6&entityType=collection
+	MYSQL_DATABASE=your_hostinger_database_name
+	MYSQL_USER=your_hostinger_database_user
+	MYSQL_PASSWORD=your_hostinger_database_password
+	MYSQL_HOST=your_hostinger_mysql_host
+	MYSQL_PORT=3306
+
+	The same `.env` file can also hold `METEOMATICS_USERNAME` and `METEOMATICS_PASSWORD` for your Meteomatics account (create a test account at https://www.meteomatics.com/en/weather-api/).
+
+6. If this is a fresh Hostinger database, import `export.sql` into it or run Django migrations:
+
+	python manage.py migrate
+
+7. Checkout postman collection, https://elements.getpostman.com/redirect?entityId=19813531-5e237a31-4e08-4901-b467-58872e08d2d6&entityType=collection
 
 	To use Signup and Login APIs, save the 'csrf' token from the response header and use it in all CRUD requests in the header as: X-CSRFToken: csrftoken
    
-9. Pages:
+8. Pages:
 	
  	http://127.0.0.1:8000/coordinates
 

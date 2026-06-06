@@ -10,10 +10,43 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+def load_env_file(path):
+    if not path.exists():
+        return
+
+    for line in path.read_text().splitlines():
+        line = line.strip()
+        if not line or line.startswith('#') or '=' not in line:
+            continue
+
+        key, value = line.split('=', 1)
+        key = key.strip()
+        value = value.strip().strip('"').strip("'")
+        os.environ.setdefault(key, value)
+
+
+def env_bool(name, default=False):
+    value = os.getenv(name)
+    if value is None:
+        return default
+    return value.lower() in {'1', 'true', 'yes', 'on'}
+
+
+def env_list(name, default=None):
+    value = os.getenv(name)
+    if not value:
+        return default or []
+    return [item.strip() for item in value.split(',') if item.strip()]
+
+
+load_env_file(BASE_DIR / '.env')
 
 DATE_FORMAT = "Y-m-d"
 USE_L10N = False
@@ -23,16 +56,19 @@ USE_L10N = False
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-9-=5lrk$d3flqi%$n68bw-xa5#_v4qn!gp$%l=hycu+5l8v3hm'
+SECRET_KEY = os.getenv(
+    'DJANGO_SECRET_KEY',
+    'django-insecure-9-=5lrk$d3flqi%$n68bw-xa5#_v4qn!gp$%l=hycu+5l8v3hm',
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env_bool('DJANGO_DEBUG', True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env_list('DJANGO_ALLOWED_HOSTS')
 
 METEOMATICS_API_URL = 'https://api.meteomatics.com/'
-METEOMATICS_USERNAME = 'we_weather'
-METEOMATICS_PASSWORD = '5Jlt2G5Vx5'
+METEOMATICS_USERNAME = os.getenv('METEOMATICS_USERNAME', 'we_weather')
+METEOMATICS_PASSWORD = os.getenv('METEOMATICS_PASSWORD', '5Jlt2G5Vx5')
 
 # Application definition
 
@@ -94,15 +130,23 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {  
-        'ENGINE': 'django.db.backends.mysql',  
-        'NAME': 'db-django',  
-        'USER':'root',  
-        'PASSWORD':'testpassword',  
-        'HOST':'127.0.0.1',  
-        'PORT':'3306'  
-    }  
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('MYSQL_DATABASE', 'db-django'),
+        'USER': os.getenv('MYSQL_USER', 'root'),
+        'PASSWORD': os.getenv('MYSQL_PASSWORD', 'testpassword'),
+        'HOST': os.getenv('MYSQL_HOST', '127.0.0.1'),
+        'PORT': os.getenv('MYSQL_PORT', '3306'),
+        'OPTIONS': {
+            'charset': 'utf8mb4',
+        },
+    }
 }
+
+if os.getenv('MYSQL_SSL_CA'):
+    DATABASES['default']['OPTIONS']['ssl'] = {
+        'ca': os.getenv('MYSQL_SSL_CA'),
+    }
 
 
 # Password validation
